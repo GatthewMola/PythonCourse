@@ -1,3 +1,4 @@
+import webbrowser
 from fpdf import FPDF
 
 class Bill:
@@ -46,26 +47,29 @@ class PdfReport:
         pdf.add_page()
 
         # Add Icon
-        pdf.image("house.png", w=30, h=30)
+        pdf.image("/Users/mattgola/Desktop/GitHub/Python Course/files-master/App-2-Flatmates-Bill/files/house.png", w=30, h=30)
 
         # Insert title
         pdf.set_font(family='Times', size=24, style='B')
-        pdf.cell(w=0, h=80, txt="Flatmates Bill", border=1, align="C", ln=1)
+        pdf.cell(w=0, h=80, txt="Flatmates Bill", border=0, align="C", ln=1)
 
         # Insert Period and Month labels and values
-        pdf.cell(w=100, h=40, txt="Period:", border=1)
-        pdf.cell(w=175, h=40, txt=bill.period, border=1, ln=1)
+        pdf.set_font(family="Times", size=14, style='B')
+        pdf.cell(w=100, h=40, txt="Period:", border=0)
+        pdf.cell(w=175, h=40, txt=bill.period, border=0, ln=1)
 
 
         # Insert name and due amount for the first flatmate
-        pdf.cell(w=100, h=40, txt=flatmate1.name, border=1)
-        pdf.cell(w=175, h=40, txt=flatmate1_pay, border=1, ln=1)
+        pdf.set_font(family="Times", size=12)
+        pdf.cell(w=100, h=25, txt=flatmate1.name, border=0)
+        pdf.cell(w=175, h=25, txt=flatmate1_pay, border=0, ln=1)
 
         # Insert name and due amount for the second flatmate
-        pdf.cell(w=100, h=40, txt=flatmate2.name, border=1)
-        pdf.cell(w=175, h=40, txt=flatmate2_pay, border=1, ln=1)
+        pdf.cell(w=100, h=25, txt=flatmate2.name, border=0)
+        pdf.cell(w=175, h=25, txt=flatmate2_pay, border=0, ln=1)
 
         pdf.output(self.filename)
+        webbrowser.open('file://' + (self.filename))
 
 
 bill = Bill(amount = 120, period = "November 2023")
