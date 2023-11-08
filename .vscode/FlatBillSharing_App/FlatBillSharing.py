@@ -69,15 +69,26 @@ class PdfReport:
         pdf.cell(w=175, h=25, txt=flatmate2_pay, border=0, ln=1)
 
         pdf.output(self.filename)
-        webbrowser.open('file://' + (self.filename))
+        # Need to debug this file path. According to lecture, I need an absolute path for this method to run, syntax is wrong right now
+        # webbrowser.open('file://' + /Users/mattgola/Documents/GitHub/PythonCourse/.vscode/FlatBillSharing_App/Report1.pdf(self.filename))
 
 
-bill = Bill(amount = 120, period = "November 2023")
-matt = Flatmates(name="Matt", days_in_flat=20)
-syd = Flatmates(name='Syd', days_in_flat=25)
+amount = float(input("Hey User, enter the bill amount: "))
 
-print("Matt pays: ", matt.pays(bill=bill, flatmate2=syd))
-print("Syd pays: ", syd.pays(bill, flatmate2=matt))
+period = input("Enter Period (e.g. December 2020): ")
 
-pdf_report = PdfReport(filename="Report1.pdf")
-pdf_report.generate(flatmate1=matt, flatmate2=syd, bill=bill)
+name1 = input("Name of Flatmate1: ")
+days_in_flat1 = int(input(f"{name1}: Days in Flat: "))
+
+name2 = input("Name of Flatmate2: ")
+days_in_flat2 = int(input(f"{name2}: Days in Flat: "))
+
+current_bill = Bill(amount, period)
+flatmate1 = Flatmates(name1, days_in_flat1)
+flatmate2 = Flatmates(name2, days_in_flat2)
+
+print(f"{flatmate1.name} pays: ", flatmate1.pays(current_bill, flatmate2))
+print(f"{flatmate2.name} pays: ", flatmate2.pays(current_bill, flatmate1))
+
+pdf_report = PdfReport(filename=f"{current_bill.period}.pdf")
+pdf_report.generate(flatmate1, flatmate2, current_bill)
