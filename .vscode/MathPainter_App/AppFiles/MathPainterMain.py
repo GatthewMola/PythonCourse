@@ -1,32 +1,43 @@
-class Square:
+from canvas import Canvas
+from shapes import Square, Rectangle
 
-    def __init__(self, x, y, s, color):
-        self.x = x
-        self.y = y
-        self.s = s
-        self.color = color
-    
-    def draw(self, canvas):
-        pass
+# CLI Interface
 
-class Rectangle:
+# Canvas inputs
+canvas_width = int(input("Enter canvas width: "))
+canvas_height = int(input("Enter canvas height: "))
 
-    def __init__(self, x, y, w, h, color):
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h
-        self.color = color
+# Create instance for canvas color options, then provide accompanying input
+canvas_color = input("Enter canvas color (white or black): ")
+colors = {"white": (255, 255, 255), "black": (0, 0, 0)}
 
-    def draw(self, canvas):
-        pass
+# Canvas Instance
+canvas = Canvas(canvas_width, canvas_height, colors[canvas_color])
 
-class Canvas:
-    
-    def __init__(self, w, h, color):
-        self.w = w
-        self.h = h
-        self.color = color
-    
-    def make(self):
-        pass
+canvas_draw = input("What do you like to draw? Enter 'quit' to quit: ")
+
+if canvas_draw == "rectangle":
+    rec_x = int(input("Enter x coordinate for the rectangle: ")),
+    rec_y = int(input("Enter y coordinate for the rectangle: ")),
+    rec_w = int(input("Enter the width of the rectangle: ")),
+    rec_h = int(input("Enter the height of the rectangle: ")),
+    rec_r = int(input("Enter red intensity of the rectangle: ")),
+    rec_g = int(input("Enter green intensity of the rectangle: ")),
+    rec_b = int(input("Enter the blue intensity of the rectangle: ")),
+    r1 = Rectangle(x = rec_x, y = rec_y, height = rec_h, width = rec_w, color = [rec_r, rec_g, rec_b])
+    r1.draw(canvas)
+    canvas_draw = input("What do you like to draw? Enter 'quit' to quit: ")
+
+if canvas_draw == "square":
+    squ_x = int(input("Enter x coordinate for the square: ")),
+    squ_y = int(input("Enter y coordinate for the square: ")),
+    squ_s = int(input("Enter the side length of the square: ")),
+    squ_r = int(input("Enter red intensity of the square: ")),
+    squ_g = int(input("Enter green intensity of the square: ")),
+    squ_b = int(input("Enter blue intensity of the square: ")),
+    s1 = Square(x = squ_x, y= squ_y, side = squ_s, color = [squ_r, squ_g, squ_b])
+    s1.draw(canvas)
+    canvas_draw = input("What do you like to draw? Enter 'quit' to quit: ")
+
+# Instances
+canvas.make("draft1.png")
