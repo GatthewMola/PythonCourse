@@ -27,7 +27,7 @@ Print Statements:
 "Enter canvas color (white or black): "
 "What do you like to draw? Enter quit to quit: "
    # Program only draws rectangles or squares
-"Enter x of the rectanlge: "
+"Enter x of the rectangle: "
    # Coordinates in Python start in the upper left corner (0, 0)
 "Enter y of the rectangle: "
 "Enter the width of the rectangle: "

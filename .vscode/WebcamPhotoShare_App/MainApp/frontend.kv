@@ -1,0 +1,16 @@
+#:kivy !
+
+<FirstScreen>:
+    # Within the first screen object, we declare what widgets to show and in what way on the screen.
+    GridLayout: # Creates an invisible grid on the screen
+        cols: 1 # Because the main screen only shows the image, search bar, and search button, we only need to create one column.
+        Image: 
+            source: 'WarhammerDeathGuard.jpeg'
+        TextInput: 
+        Button: 
+            text: 'Search Image'
+
+<RootWidget>:
+    FirstScreen:
+        id: first_screen
+        name: 'first_screen'
